@@ -1,12 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">Spicybase - Web</h1>
+
+<h3 align="center">
+  <a href="#">Visit live app</a> |
+  <a href="https://github.com/bradzickafoose/spicybase-native">View native client</a> |
+  <a href="https://github.com/bradzickafoose/spicybase-server">View API</a>
+</h3>
+
+## Stack
+
+- web client -> **React**
+
+## Services
+
+- authentication -> **Auth0**
+- media cloud storage -> **Backblaze B2**
+- payment -> **Stripe**
+- server host -> **Linode / GCP**
+- web client host -> **Netlify / Vercel**
 
 ## Getting Started
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 First, run the development server:
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 
