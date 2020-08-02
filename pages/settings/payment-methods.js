@@ -1,11 +1,11 @@
 import React from 'react';
-import { Breadcrumb, PageTitle } from '../../components';
+import { Breadcrumbs, PageTitle } from '../../components';
 
 function Payments() {
   return (
     <div className="py-10">
       <PageTitle title="Payments &amp; payouts">
-        <Breadcrumb />
+        <Breadcrumbs />
       </PageTitle>
       <main>
         <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">

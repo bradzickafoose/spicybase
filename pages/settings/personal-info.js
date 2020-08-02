@@ -1,12 +1,11 @@
 import React from 'react';
-import Link from 'next/link';
-import { Breadcrumb, PageTitle } from '../../components';
+import { Breadcrumbs, PageTitle } from '../../components';
 
 const PersonalInfo = () => {
   return (
     <div className="py-10">
       <PageTitle title="Personal info">
-        <Breadcrumb />
+        <Breadcrumbs />
       </PageTitle>
       <main>
         <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">

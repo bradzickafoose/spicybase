@@ -1,11 +1,11 @@
 import React from 'react';
-import { Breadcrumb, PageTitle } from '../../components';
+import { Breadcrumbs, PageTitle } from '../../components';
 
 function LoginAndSecurity() {
   return (
     <div className="py-10">
       <PageTitle title="Login &amp; security">
-        <Breadcrumb />
+        <Breadcrumbs />
       </PageTitle>
       <main>
         <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
