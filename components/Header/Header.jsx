@@ -61,25 +61,22 @@ function Header() {
             <div className="hidden md:ml-6 md:flex">
               <Link
                 href="/dashboard"
-                activeClassName="border-red-500 text-gray-700"
               >
+                {/* activeClassName="border-red-500 text-gray-700" */}
                 <a className="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-b-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300">Dashboard</a>
               </Link>
               <Link
                 href="/jobs"
-                activeClassName="border-red-500 text-gray-700"
               >
                 <a className="inline-flex items-center px-1 pt-1 ml-8 text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-b-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300">Jobs</a>
               </Link>
               <Link
                 href="/team"
-                activeClassName="border-red-500 text-gray-700"
               >
                 <a className="inline-flex items-center px-1 pt-1 ml-8 text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-b-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300">Team</a>
               </Link>
               <Link
                 href="/messages"
-                activeClassName="border-red-500 text-gray-700"
               >
                 <a className="inline-flex items-center px-1 pt-1 ml-8 text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-b-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300">Messages</a>
               </Link>
@@ -87,7 +84,7 @@ function Header() {
           </div>
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <Link href="/post-job" type="button">
+              <Link href="/post-job">
                 <a className="btn btn-primary">
                 <svg
                   className="w-5 h-5 mr-2 -ml-1"
