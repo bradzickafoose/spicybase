@@ -10,17 +10,6 @@ function Job({ job }) {
     </>
   )
 }
-
-export async function getServerSideProps (context) {
-  const { data } = await axios.get('http://localhost:3000/api/jobs');
-
-  const job = data.find(j => j.id === Number(context.params.id));
-
-  return { props: {
-    job
-  } };
-}
-
 export default Job;
 
 
