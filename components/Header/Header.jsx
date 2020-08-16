@@ -1,9 +1,22 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Dropdown } from './'
+import { Dropdown } from './';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import { useRouter } from 'next/router';
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+
+  // TODO: Abstract for reuse
+  const handleLogout = (event) => {
+    event.preventDefault();
+    axiosWithAuth()
+      .post('/logout')
+      .then(() => router.push('/'))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <header className="bg-white shadow">
       <nav className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -59,26 +72,26 @@ function Header() {
             </Link>
             {/* Nav Links */}
             <div className="hidden md:ml-6 md:flex">
-              <Link
-                href="/dashboard"
-              >
+              <Link href="/dashboard">
                 {/* activeClassName="border-red-500 text-gray-700" */}
-                <a className="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-b-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300">Dashboard</a>
+                <a className="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-b-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300">
+                  Dashboard
+                </a>
               </Link>
-              <Link
-                href="/jobs"
-              >
-                <a className="inline-flex items-center px-1 pt-1 ml-8 text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-b-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300">Jobs</a>
+              <Link href="/jobs">
+                <a className="inline-flex items-center px-1 pt-1 ml-8 text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-b-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300">
+                  Jobs
+                </a>
               </Link>
-              <Link
-                href="/team"
-              >
-                <a className="inline-flex items-center px-1 pt-1 ml-8 text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-b-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300">Team</a>
+              <Link href="/team">
+                <a className="inline-flex items-center px-1 pt-1 ml-8 text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-b-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300">
+                  Team
+                </a>
               </Link>
-              <Link
-                href="/messages"
-              >
-                <a className="inline-flex items-center px-1 pt-1 ml-8 text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-b-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300">Messages</a>
+              <Link href="/messages">
+                <a className="inline-flex items-center px-1 pt-1 ml-8 text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-b-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300">
+                  Messages
+                </a>
               </Link>
             </div>
           </div>
@@ -86,18 +99,18 @@ function Header() {
             <div className="flex-shrink-0">
               <Link href="/post-job">
                 <a className="btn btn-primary">
-                <svg
-                  className="w-5 h-5 mr-2 -ml-1"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span>Create new job</span>
+                  <svg
+                    className="w-5 h-5 mr-2 -ml-1"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  <span>Create new job</span>
                 </a>
               </Link>
             </div>
@@ -134,20 +147,20 @@ function Header() {
       --> */}
       <div className="hidden md:hidden">
         <div className="pt-2 pb-3">
-          <Link
-            href="/dashboard"
-          >
-            <a className="block py-2 pl-3 pr-4 text-base font-medium text-red-700 transition duration-150 ease-in-out border-l-4 border-red-500 bg-red-50 focus:outline-none focus:text-red-800 focus:bg-red-100 focus:border-red-700 sm:pl-5 sm:pr-6">Dashboard</a>
+          <Link href="/dashboard">
+            <a className="block py-2 pl-3 pr-4 text-base font-medium text-red-700 transition duration-150 ease-in-out border-l-4 border-red-500 bg-red-50 focus:outline-none focus:text-red-800 focus:bg-red-100 focus:border-red-700 sm:pl-5 sm:pr-6">
+              Dashboard
+            </a>
           </Link>
-          <Link
-            href="/teams"
-          >
-            <a className="block py-2 pl-3 pr-4 mt-1 text-base font-medium text-gray-600 transition duration-150 ease-in-out border-l-4 border-transparent hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 sm:pl-5 sm:pr-6">Teams</a>
+          <Link href="/teams">
+            <a className="block py-2 pl-3 pr-4 mt-1 text-base font-medium text-gray-600 transition duration-150 ease-in-out border-l-4 border-transparent hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 sm:pl-5 sm:pr-6">
+              Teams
+            </a>
           </Link>
-          <Link
-            href="/projects"
-          >
-            <a className="block py-2 pl-3 pr-4 mt-1 text-base font-medium text-gray-600 transition duration-150 ease-in-out border-l-4 border-transparent hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 sm:pl-5 sm:pr-6">Projects</a>
+          <Link href="/projects">
+            <a className="block py-2 pl-3 pr-4 mt-1 text-base font-medium text-gray-600 transition duration-150 ease-in-out border-l-4 border-transparent hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 sm:pl-5 sm:pr-6">
+              Projects
+            </a>
           </Link>
         </div>
         <div className="pt-4 pb-3 border-t border-gray-200">
@@ -169,27 +182,25 @@ function Header() {
             </div>
           </div>
           <div className="mt-3">
-            <Link
-              href="/me"
-
-            >
+            <Link href="/me">
               <a>Your Profile</a>
             </Link>
-            <Link
-              href="/account-settings"
-            >
-              <a className="block px-4 py-2 mt-1 text-base font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100 sm:px-6">Account</a>
+            <Link href="/account-settings">
+              <a className="block px-4 py-2 mt-1 text-base font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100 sm:px-6">
+                Account
+              </a>
             </Link>
-            <Link
-              href="#"
+            <button
+              className="block px-4 py-2 mt-1 text-base font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100 sm:px-6"
+              onClick={handleLogout}
             >
-              <a className="block px-4 py-2 mt-1 text-base font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100 sm:px-6">Sign out</a>
-            </Link>
+              Sign out
+            </button>
           </div>
         </div>
       </div>
     </header>
   );
-};
+}
 
 export default Header;

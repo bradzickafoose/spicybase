@@ -1,11 +1,13 @@
 const router = require('express').Router();
 const {User} = require('../../data/models');
 const {compareSync, hashSync} = require('bcrypt');
-const {generateToken, validateBody} = require('../middleware/authenticate');
+const {authenticate, generateToken, validateBody} = require('../middleware/authenticate');
 
 router
 	.post('/register', validateBody, register)
-	.post('/login', login);
+  .post('/login', login)
+  .get('/whoami', authenticate, whoami)
+  .get('/logout', logout);
 
 async function register(req, res) {
 	let user = req.body;
@@ -37,9 +39,9 @@ async function login(req, res) {
 	try {
 		if (user && compareSync(password, user.password)) {
 			const token = generateToken(user);
-			res.status(200).json({
+      req.session.token = token;
+      res.status(200).json({
 				message: `Welcome, ${user.first_name}!`,
-				token,
 				user,
 			});
 		} else {
@@ -53,6 +55,24 @@ async function login(req, res) {
 			message: 'Check username and password and try again',
 		});
 	}
+}
+
+function whoami(req, res) {
+
+}
+
+function logout(req, res) {
+  req.session.destroy((error) => {
+    if(error){
+      res.status(500).json({
+        message: 'Unable to logout'
+      })
+    } else {
+      res.status(200).json({
+        message: 'Logout successful'
+      })
+    }
+  })
 }
 
 module.exports = router;
