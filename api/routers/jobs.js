@@ -24,9 +24,8 @@ async function createJob(req, res) {
 
 async function readJobs(req, res) {
 	const user_id = req.decoded.id;
-
-	const _jobs = await Job.forge().where({created_by: user_id}).fetchAll({withRelated: 'job_categories'});
-	const jobs = _jobs.serialize();
+	const _jobs = await Job.forge().where({created_by: user_id}).fetchAll({withRelated: 'job_categories', require:false});
+  const jobs = _jobs.serialize();
 
 	res.status(200).json(jobs);
 }
