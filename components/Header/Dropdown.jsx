@@ -1,20 +1,7 @@
-import React from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { Transition } from './';
-import {axiosWithAuth} from '../../utils'
 
-function Dropdown({ isOpen }) {
-  const router = useRouter();
-
-  const handleLogout = (event) => {
-    event.preventDefault();
-    axiosWithAuth()
-      .get('/logout')
-      .then(() => router.push('/login'))
-      .catch((err) => console.log(err));
-  };
-
+function Dropdown({ isOpen, handleLogout }) {
   return (
     <Transition
       show={isOpen}
