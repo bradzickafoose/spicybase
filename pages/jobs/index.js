@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { useState, useEffect } from 'react';
 import { axiosWithAuth } from 'utils';
 import { PageTitle, JobLink } from 'components';
+import { APP_NAME } from 'utils/constants';
 
 function Jobs() {
   const [jobs, setJobs] = useState([]);
@@ -18,7 +19,7 @@ function Jobs() {
   return (
     <>
       <Head>
-        <title>My Jobs</title>
+        <title>My Jobs - {APP_NAME}</title>
       </Head>
       <PageTitle title="My Jobs" />
       <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">

@@ -1,12 +1,13 @@
 import Head from 'next/head'
 import Link from 'next/link';
 import { PageTitle } from 'components';
+import { APP_NAME } from 'utils/constants'
 
 function Team({ first_name, last_name }) {
   return (
     <>
       <Head>
-        <title>Team</title>
+        <title>Team - {APP_NAME}</title>
       </Head>
       <PageTitle title="Team" />
       <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">

@@ -1,11 +1,12 @@
 import Head from 'next/head'
 import { PageTitle } from 'components';
+import { APP_NAME } from 'utils/constants';
 
 function Dashboard() {
   return (
     <>
       <Head>
-        <title>Dashboard</title>
+        <title>Dashboard - {APP_NAME}</title>
       </Head>
       <PageTitle title="Dashboard" />
       <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
