@@ -1,23 +1,22 @@
-import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
-import { axiosWithAuth } from '../../utils';
+import { axiosWithAuth } from 'utils';
 
 function JobForm({ categories }) {
   const { register, errors, handleSubmit } = useForm();
-	const router = useRouter();
+  const router = useRouter();
 
   const onSubmit = (data) => {
-		console.log(data);
-		data.job_category_id = parseInt(data.job_category_id);
+    console.log(data);
+    data.job_category_id = parseInt(data.job_category_id);
 
-		axiosWithAuth()
-			.post('/jobs', data)
-			.then(res => {
-				console.log(res.data);
-				router.push('/dashboard');
-			})
-			.catch(err => console.log(err));
+    axiosWithAuth()
+      .post('/jobs', data)
+      .then((res) => {
+        console.log(res.data);
+        router.push('/dashboard');
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -62,16 +61,14 @@ function JobForm({ categories }) {
                   ref={register}
                 >
                   <option>Select a category</option>
-									{categories && categories.map(category => {
-										return (
-											<option 
-												key={category.id} 
-												value={category.id}
-											>
-												{category.name}
-											</option>
-										)
-									})}
+                  {categories &&
+                    categories.map((category) => {
+                      return (
+                        <option key={category.id} value={category.id}>
+                          {category.name}
+                        </option>
+                      );
+                    })}
                 </select>
               </div>
             </div>
@@ -157,6 +154,5 @@ function JobForm({ categories }) {
     </form>
   );
 }
-
 
 export default JobForm;

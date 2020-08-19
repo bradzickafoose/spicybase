@@ -1,7 +1,6 @@
-import React from 'react';
 import jwt from 'jsonwebtoken';
-import { PageTitle } from '../../components';
-import { Job as JobModel } from '../../data/models';
+import { PageTitle } from 'components';
+import { Job as JobModel } from 'data/models';
 
 function Job({ job }) {
   return (
