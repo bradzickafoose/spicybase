@@ -1,6 +1,6 @@
 import 'tailwindcss/tailwind.css';
-import '../styles/globals.css';
-import { Header, Footer } from '../components';
+import 'styles/globals.css';
+import { Header, Footer } from 'components';
 
 function App({ Component, pageProps }) {
   return (

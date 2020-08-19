@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
-import { PageTitle } from '../../components';
+import { PageTitle } from 'components';
 
 function Settings() {
   const [first_name] = useState('Bob');

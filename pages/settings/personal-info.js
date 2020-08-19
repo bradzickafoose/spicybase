@@ -1,5 +1,4 @@
-import React from 'react';
-import { Breadcrumbs, PageTitle } from '../../components';
+import { Breadcrumbs, PageTitle } from 'components';
 
 const PersonalInfo = () => {
   return (
