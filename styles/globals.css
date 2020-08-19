@@ -14,3 +14,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.active {
+  @apply text-gray-700 border-red-500;
+}
