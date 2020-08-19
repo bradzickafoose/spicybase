@@ -1,11 +1,14 @@
-import React from 'react';
+import Head from 'next/head'
 import Link from 'next/link';
-import { PageTitle } from '../components';
+import { PageTitle } from 'components';
 
 function Team({ first_name, last_name }) {
   return (
     <>
-      <PageTitle title="Teams" />
+      <Head>
+        <title>Team</title>
+      </Head>
+      <PageTitle title="Team" />
       <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="px-4 py-8 sm:px-0">
           <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

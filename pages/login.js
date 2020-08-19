@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { useRouter } from 'next/router';
+import Head from 'next/head'
 import Link from 'next/link';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { axiosWithAuth } from 'utils/axiosWithAuth';
 
 function Login() {
   const [credentials, setCredentials] = useState({
@@ -35,11 +36,12 @@ function Login() {
 
   return (
     <>
+    <Head>Login</Head>
       <div className="flex items-center justify-center min-h-screen px-4 py-12 bg-gray-50 sm:px-6 lg:px-8">
         <div className="w-full max-w-md">
           <div>
             <h2 className="mt-6 text-3xl font-extrabold leading-9 text-center text-gray-900">
-              Sign in to your account
+              Log in to your account
             </h2>
           </div>
           <form className="mt-8" onSubmit={handleSubmit}>
@@ -54,7 +56,7 @@ function Login() {
                   type="email"
                   required
                   className="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5"
-                  placeholder="Email address"
+                  placeholder="Email"
                 />
               </div>
               <div className="-mt-px">
@@ -113,7 +115,7 @@ function Login() {
                     />
                   </svg>
                 </span>
-                Sign in
+                Log in
               </button>
             </div>
           </form>
@@ -121,7 +123,7 @@ function Login() {
             Or
             <Link href="/register">
               <a className="pl-1 font-medium text-red-600 transition duration-150 ease-in-out hover:text-red-500 focus:outline-none focus:underline">
-                register for a free account
+                create new account
               </a>
             </Link>
           </p>

@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { PageTitle, JobLink } from '../../components';
-import { axiosWithAuth } from '../../utils';
+import Head from 'next/head';
+import { useState, useEffect } from 'react';
+import { axiosWithAuth } from 'utils';
+import { PageTitle, JobLink } from 'components';
 
 function Jobs() {
   const [jobs, setJobs] = useState([]);
@@ -16,6 +17,9 @@ function Jobs() {
 
   return (
     <>
+      <Head>
+        <title>My Jobs</title>
+      </Head>
       <PageTitle title="My Jobs" />
       <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
         <section className="px-4 py-8 sm:px-0">

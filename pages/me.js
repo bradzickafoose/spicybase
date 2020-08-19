@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { PageTitle } from '../components';
+import Head from 'next/head';
+import { useState } from 'react';
+import { PageTitle } from 'components';
 
 function Me() {
   const [first_name] = useState('Bob');
@@ -7,6 +8,9 @@ function Me() {
 
   return (
     <>
+      <Head>
+        <title>{first_name}'s Profile</title>
+      </Head>
       <PageTitle title={`${first_name} ${last_name}`} />
     </>
   );

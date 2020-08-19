@@ -1,9 +1,12 @@
-import React from 'react';
-import { PageTitle } from '../components';
+import Head from 'next/head'
+import { PageTitle } from 'components';
 
 function Dashboard() {
   return (
     <>
+      <Head>
+        <title>Dashboard</title>
+      </Head>
       <PageTitle title="Dashboard" />
       <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
         {/* <!-- Replace with your content --> */}
