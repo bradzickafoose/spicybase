@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { RoomsList, ChatHeader, ChatBody, ChatFooter } from './';
 
 function ChatRooms() {

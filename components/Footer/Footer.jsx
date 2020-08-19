@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 function Footer() {
   const [year] = useState(new Date().getFullYear());
@@ -7,8 +7,7 @@ function Footer() {
     <>
       <footer>
         <div className="px-4 pb-4 mx-auto text-gray-500 max-w-7xl sm:px-6 sm:pb-4 lg:pb-4 lg:px-8">
-          &copy; <span>{year}</span> Utiliteams, Inc. All rights
-          reserved
+          &copy; <span>{year}</span> Utiliteams, Inc. All rights reserved
         </div>
       </footer>
     </>

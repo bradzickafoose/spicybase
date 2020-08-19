@@ -1,5 +1,3 @@
-import React from 'react';
-
 function ChatFooter() {
   return (
     <footer className="flex-none chat-footer">
