@@ -29,7 +29,7 @@
 		"react-hook-form": "^6.2.0",
 		"react-transition-group": "^4.4.1",
 		"socket.io": "^2.3.0",
-		"tailwindcss": "^1.6.1"
+		"tailwindcss": "^1.7.0"
 	},
 	"devDependencies": {
 		"prettier": "^2.0.5"
