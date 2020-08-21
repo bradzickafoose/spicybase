@@ -1,6 +1,6 @@
-import jwt from 'jsonwebtoken';
 import { PageTitle } from 'components';
 import { Job as JobModel } from 'data/models';
+import requireLogin from 'utils/requireLogin';
 
 function Job({ job }) {
   return (
@@ -17,30 +17,14 @@ function Job({ job }) {
   );
 }
 
-export async function getServerSideProps(context) {
-  const token = context.req.session.token;
-  const jwtSecret =
-    process.env.JWT_SECRET ||
-    'add a .env file to root of project with the JWT_SECRET variable.';
-
-  const promise = new Promise((resolve, reject) => {
-    return jwt.verify(token, jwtSecret, (err, decoded) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(decoded);
-      }
-    });
-  });
-
-  const decoded = await promise;
-
+async function fetchJob(decoded, ctx) {
   const job = await new JobModel()
-    .where({ created_by: decoded.id, id: +context.params.id })
+    .where({ created_by: decoded.id, id: +ctx.params.id })
     .fetch();
   const serialized = job.serialize({ hidden: ['created_at', 'updated_at'] });
-  console.log(serialized);
   return { props: { job: serialized } };
 }
+
+export const getServerSideProps = requireLogin(fetchJob);
 
 export default Job;

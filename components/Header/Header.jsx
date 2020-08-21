@@ -18,7 +18,7 @@ function Header() {
   const handleLogout = (event) => {
     event.preventDefault();
     axiosWithAuth()
-      .post('/logout')
+      .get('/logout')
       .then(() => router.push('/'))
       .catch((err) => console.log(err));
   };
