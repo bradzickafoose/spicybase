@@ -1,19 +1,14 @@
-import Head from 'next/head';
-import { PageTitle, ChatRooms } from 'components';
-import { APP_NAME } from 'utils/constants';
+import { Layout, ChatRooms } from 'components';
+import requireUser from 'utils/requireUser';
 
-function Messages() {
+export default function MessagesPage() {
   return (
-    <>
-      <Head>
-        <title>Messages - {APP_NAME}</title>
-      </Head>
-      <PageTitle title="Messages" />
+    <Layout title="Messages">
       <div className="flex flex-row flex-grow min-h-0 px-4 mx-auto sm:px-0 max-w-7xl sm:px-6 lg:px-8">
         <ChatRooms />
       </div>
-    </>
+    </Layout>
   );
 }
 
-export default Messages;
+export const getServerSideProps = requireUser();

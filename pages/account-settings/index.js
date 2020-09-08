@@ -1,21 +1,20 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import { PageTitle } from 'components';
+import { Layout } from 'components';
 
-function Settings() {
+export default function AccountSettingsPage() {
   const [first_name] = useState('Bob');
   const [last_name] = useState('Iger');
   const [email] = useState('admin@test.com');
 
   return (
-    <div className="py-10">
-      <PageTitle title="Account" />
+    <Layout title="Account">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <span className="font-semibold">
           {first_name} {last_name},
         </span>
         <span className="pl-1">{email} •</span>
-        <Link href="/me">
+        <Link href="/profile">
           <a className="pl-1 text-red-500">Go to profile</a>
         </Link>
       </div>
@@ -26,7 +25,7 @@ function Settings() {
               <div className="px-4 py-5 sm:p-6">
                 <dl>
                   <dt className="text-lg font-semibold leading-6 text-gray-900 truncate sm:flex">
-                    <Link href="settings/personal-info">
+                    <Link href="account-settings/personal-info">
                       <a>Personal info</a>
                     </Link>
                     <svg
@@ -51,7 +50,7 @@ function Settings() {
               <div className="px-4 py-5 sm:p-6">
                 <dl>
                   <dt className="text-lg font-semibold leading-6 text-gray-900 truncate sm:flex">
-                    <Link href="settings/login-and-security">
+                    <Link href="account-settings/login-and-security">
                       <a>Login &amp; security</a>
                     </Link>
                     <svg
@@ -76,7 +75,7 @@ function Settings() {
               <div className="px-4 py-5 sm:p-6">
                 <dl>
                   <dt className="text-lg font-semibold leading-6 text-gray-900 truncate sm:flex">
-                    <Link href="settings/payment-methods">
+                    <Link href="account-settings/payment-methods">
                       <a>Payments &amp; payouts</a>
                     </Link>
                     <svg
@@ -101,7 +100,7 @@ function Settings() {
               <div className="px-4 py-5 sm:p-6">
                 <dl>
                   <dt className="text-lg font-semibold leading-6 text-gray-900 truncate sm:flex">
-                    <Link href="settings/notifications">
+                    <Link href="account-settings/notifications">
                       <a>Notifications</a>
                     </Link>
                     <svg
@@ -126,8 +125,6 @@ function Settings() {
           </div>
         </div>
       </main>
-    </div>
+    </Layout>
   );
 }
-
-export default Settings;
