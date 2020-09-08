@@ -2,8 +2,30 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: var(--font-sans);
+  background: var(--color-background);
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
 }
 
 a {
@@ -13,8 +35,4 @@ a {
 
 * {
   box-sizing: border-box;
-}
-
-.active {
-  @apply text-gray-700 border-red-500;
 }

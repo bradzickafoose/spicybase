@@ -1,5 +1,5 @@
 exports.up = function (knex) {
-  return knex.schema.createTable('permissions', (tbl) => {
+  return knex.schema.createTable('permissions', tbl => {
     tbl.increments();
     tbl.string('scope', 128).notNullable().unique();
     tbl.string('description', 255).notNullable();

@@ -1,0 +1,36 @@
+:root {
+  --color-white: #fff;
+  --color-black: #222;
+  --color-gray: #6c757d;
+  --color-gray-dark: #283c46;
+  --color-green: #2da562;
+  --color-tan: #f3ede8;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  --color-shadow-dark: rgba(0, 0, 0, 0.2);
+  --color-text: var(--color-black);
+  --color-background: var(--color-tan);
+  --color-sheet: var(--color-white);
+  --color-neutral: var(--color-gray);
+  --color-link: var(--color-gray-dark);
+  --color-accent: var(--color-green);
+  --space-x-small: 0.25em;
+  --space-small: 0.5em;
+  --space-medium: 1em;
+  --space-large: 2em;
+  --space-x-large: 3em;
+  --space-xx-large: 4em;
+  --space-xxx-large: 6em;
+  --space-navbar: 4em;
+  --font-sans: Inter, -apple-system, BlinkMacSystemFont, 'Apple Color Emoji', arial, sans-serif;
+  --font-mono: monospace;
+  --type-base: calc(1.6em + 0.5vw);
+  --type-xxx-small: 55%;
+  --type-xx-small: 65%;
+  --type-x-small: 75%;
+  --type-small: 85%;
+  --type-medium: 100%;
+  --type-large: 125%;
+  --type-x-large: 150%;
+  --type-xx-large: 200%;
+  --type-xxx-large: 300%;
+}
