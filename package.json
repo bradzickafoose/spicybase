@@ -9,9 +9,11 @@
 	},
 	"dependencies": {
 		"@tailwindcss/ui": "^0.5.0",
+		"@tailwindui/react": "^0.1.1",
 		"axios": "^0.19.2",
 		"bcrypt": "^5.0.0",
 		"bookshelf": "^1.2.0",
+		"classnames": "^2.2.6",
 		"connect-redis": "^5.0.0",
 		"cors": "^2.8.5",
 		"dotenv": "^8.2.0",
@@ -27,9 +29,8 @@
 		"react": "16.13.1",
 		"react-dom": "16.13.1",
 		"react-hook-form": "^6.2.0",
-		"react-transition-group": "^4.4.1",
 		"socket.io": "^2.3.0",
-		"tailwindcss": "^1.7.0"
+		"tailwindcss": "^1.8.0"
 	},
 	"devDependencies": {
 		"prettier": "^2.0.5"

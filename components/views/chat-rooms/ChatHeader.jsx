@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-function ChatHeader() {
+export default function ChatHeader() {
   return (
     <header className="flex flex-row items-center justify-between flex-none px-6 py-4 border-b border-gray-200 chat-header">
       <div className="flex">
@@ -32,4 +32,3 @@ function ChatHeader() {
     </header>
   );
 }
-export default ChatHeader;

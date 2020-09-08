@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-function ChatBody() {
+export default function ChatBody() {
   return (
     <div className="flex-1 p-4 overflow-y-scroll chat-body">
       {/* Message Group 1 */}
@@ -155,4 +155,3 @@ C15.786,7.8,14.8,8.785,14.8,10s0.986,2.2,2.201,2.2S19.2,11.215,19.2,10S18.216,7.
     </div>
   );
 }
-export default ChatBody;

@@ -1,6 +1,4 @@
-import React from 'react';
-
-function RoomsList() {
+export default function RoomsList() {
   return (
     <div className="flex-1 p-2 overflow-y-scroll rooms">
       {/* Room 1 */}
@@ -144,5 +142,3 @@ function RoomsList() {
     </div>
   );
 }
-
-export default RoomsList;

@@ -1,6 +1,6 @@
 import { RoomsList, ChatHeader, ChatBody, ChatFooter } from './';
 
-function ChatRooms() {
+export default function ChatRooms() {
   return (
     <>
       <section className="flex flex-col flex-none w-24 overflow-auto transition-all duration-300 ease-in-out lg:max-w-sm md:w-2/5">
@@ -14,5 +14,3 @@ function ChatRooms() {
     </>
   );
 }
-
-export default ChatRooms;

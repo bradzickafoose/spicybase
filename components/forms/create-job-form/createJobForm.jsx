@@ -1,22 +1,23 @@
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { axiosWithAuth } from 'utils';
+import { Button } from 'components';
 
-function JobForm({ categories }) {
+export default function CreateJobForm({ categories }) {
   const { register, errors, handleSubmit } = useForm();
   const router = useRouter();
 
-  const onSubmit = (data) => {
+  const onSubmit = data => {
     console.log(data);
     data.job_category_id = parseInt(data.job_category_id);
 
     axiosWithAuth()
       .post('/jobs', data)
-      .then((res) => {
+      .then(res => {
         console.log(res.data);
         router.push('/dashboard');
       })
-      .catch((err) => console.log(err));
+      .catch(err => console.log(err));
   };
 
   return (
@@ -24,9 +25,7 @@ function JobForm({ categories }) {
       <section className="px-4 py-5 mt-8 bg-white shadow sm:rounded-lg sm:p-6">
         <div className="md:grid md:grid-cols-3 md:gap-6">
           <div className="md:col-span-1">
-            <h3 className="text-lg font-medium leading-6 text-gray-900">
-              Title
-            </h3>
+            <h3 className="text-lg font-medium leading-6 text-gray-900">Title</h3>
           </div>
           <div className="mt-5 md:mt-0 md:col-span-2">
             <div className="grid grid-cols-3 gap-6">
@@ -43,9 +42,7 @@ function JobForm({ categories }) {
                   ref={register({ required: true, maxLength: 255 })}
                 />
                 {errors.jobTitle && (
-                  <p class="mt-1 text-red-500 text-xs">
-                    This field is required.
-                  </p>
+                  <p class="mt-1 text-red-500 text-xs">This field is required.</p>
                 )}
               </div>
               <div className="col-span-6 sm:col-span-2">
@@ -62,7 +59,7 @@ function JobForm({ categories }) {
                 >
                   <option>Select a category</option>
                   {categories &&
-                    categories.map((category) => {
+                    categories.map(category => {
                       return (
                         <option key={category.id} value={category.id}>
                           {category.name}
@@ -78,9 +75,7 @@ function JobForm({ categories }) {
       <section className="px-4 py-5 mt-8 bg-white shadow sm:rounded-lg sm:p-6">
         <div className="md:grid md:grid-cols-3 md:gap-6">
           <div className="md:col-span-1">
-            <h3 className="text-lg font-medium leading-6 text-gray-900">
-              Description
-            </h3>
+            <h3 className="text-lg font-medium leading-6 text-gray-900">Description</h3>
           </div>
           <div className="mt-5 md:mt-0 md:col-span-2">
             <div className="grid grid-cols-3 gap-6">
@@ -98,9 +93,7 @@ function JobForm({ categories }) {
                   ref={register({ required: true })}
                 />
                 {errors.jobDescription && (
-                  <p class="mt-1 text-red-500 text-xs">
-                    This field is required.
-                  </p>
+                  <p class="mt-1 text-red-500 text-xs">This field is required.</p>
                 )}
               </div>
             </div>
@@ -110,9 +103,7 @@ function JobForm({ categories }) {
       <section className="px-4 py-5 mt-8 bg-white shadow sm:rounded-lg sm:p-6">
         <div className="md:grid md:grid-cols-3 md:gap-6">
           <div className="md:col-span-1">
-            <h3 className="text-lg font-medium leading-6 text-gray-900">
-              Location
-            </h3>
+            <h3 className="text-lg font-medium leading-6 text-gray-900">Location</h3>
           </div>
           <div className="mt-5 md:mt-0 md:col-span-2">
             <div className="grid grid-cols-3 gap-6">
@@ -130,9 +121,7 @@ function JobForm({ categories }) {
                   ref={register({ required: true })}
                 />
                 {errors.jobAddress && (
-                  <p class="mt-1 text-red-500 text-xs">
-                    This field is required.
-                  </p>
+                  <p class="mt-1 text-red-500 text-xs">This field is required.</p>
                 )}
               </div>
             </div>
@@ -142,17 +131,10 @@ function JobForm({ categories }) {
       <footer className="mt-8">
         <div className="flex justify-end">
           <span className="inline-flex ml-3 rounded-md shadow-sm">
-            <button
-              type="submit"
-              className="inline-flex justify-center px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out bg-red-600 border border-transparent rounded-md hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red active:bg-red-700"
-            >
-              Create job
-            </button>
+            <Button type="submit">Create job</Button>
           </span>
         </div>
       </footer>
     </form>
   );
 }
-
-export default JobForm;

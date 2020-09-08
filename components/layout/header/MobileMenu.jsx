@@ -1,10 +1,10 @@
 import { Link } from 'components';
 
-function MobileMenu({ links, handleLogout }) {
+export default function MobileMenu({ accountLinks, appLinks, handleLogout }) {
   return (
     <div className="block md:hidden">
       <div className="pt-2 pb-3">
-        {links.map(({ href, label }) => (
+        {appLinks.map(({ href, label }) => (
           <Link key={href} id={`${href}${label}`} activeClassName="active" href={href}>
             {/* activeClassName="text-red-700 border-red-500 bg-red-5 focus:text-red-800 focus:bg-red-100 focus:border-red-700" */}
             <a className="block py-2 pl-3 pr-4 mt-1 text-base font-medium text-gray-600 transition duration-150 ease-in-out border-l-4 border-transparent hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 sm:pl-5 sm:pr-6">
@@ -23,16 +23,12 @@ function MobileMenu({ links, handleLogout }) {
             />
           </div>
           <div className="ml-3">
-            <div className="text-base font-medium leading-6 text-gray-800">
-              Bob Iger
-            </div>
-            <div className="text-sm font-medium leading-5 text-gray-500">
-              bob@igerutility.com
-            </div>
+            <div className="text-base font-medium leading-6 text-gray-800">Bob Iger</div>
+            <div className="text-sm font-medium leading-5 text-gray-500">bob@igerutility.com</div>
           </div>
         </div>
         <div className="mt-3">
-          <Link href="/me">
+          <Link href="/profile">
             <a className="block px-4 py-2 mt-1 text-base font-medium text-gray-500 transition duration-150 ease-in-out hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100 sm:px-6">
               Your Profile
             </a>
@@ -53,5 +49,3 @@ function MobileMenu({ links, handleLogout }) {
     </div>
   );
 }
-
-export default MobileMenu;

@@ -1,4 +1,4 @@
-function ChatFooter() {
+export default function ChatFooter() {
   return (
     <footer className="flex-none chat-footer">
       <div className="flex flex-row items-center p-4">
@@ -23,5 +23,3 @@ function ChatFooter() {
     </footer>
   );
 }
-
-export default ChatFooter;

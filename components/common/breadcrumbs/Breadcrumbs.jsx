@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
-function Breadcrumbs() {
+export default function Breadcrumbs({ title }) {
   return (
     <nav className="items-center hidden text-sm font-medium leading-5 sm:flex">
-      <Link href="/settings">
+      <Link href="/account-settings">
         <a className="text-gray-500 transition duration-150 ease-in-out hover:text-gray-700">
           Account
         </a>
@@ -19,9 +19,7 @@ function Breadcrumbs() {
           clipRule="evenodd"
         />
       </svg>
-      <span className="text-gray-500">Personal info</span>
+      <span className="text-gray-500">{title}</span>
     </nav>
   );
 }
-
-export default Breadcrumbs;

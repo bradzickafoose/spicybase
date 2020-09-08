@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import { Transition } from './';
+import { Transition } from '@tailwindui/react';
 
-function Dropdown({ isOpen, handleLogout }) {
+export default function Dropdown({ accountLinks, isOpen, handleLogout }) {
   return (
     <Transition
       show={isOpen}
@@ -19,12 +19,12 @@ function Dropdown({ isOpen, handleLogout }) {
           aria-orientation="vertical"
           aria-labelledby="user-menu"
         >
-          <Link href="/me">
+          <Link href="/profile">
             <a className="block px-4 py-2 text-sm leading-5 text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100 focus:outline-none focus:bg-gray-100">
               Your Profile
             </a>
           </Link>
-          <Link href="/settings">
+          <Link href="/account-settings">
             <a className="block px-4 py-2 text-sm leading-5 text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100 focus:outline-none focus:bg-gray-100">
               Account
             </a>
@@ -39,5 +39,3 @@ function Dropdown({ isOpen, handleLogout }) {
     </Transition>
   );
 }
-
-export default Dropdown;
