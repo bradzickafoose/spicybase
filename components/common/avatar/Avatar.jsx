@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
-export default function Avatar({ avatarUrl, size = 'base', className, ...props }) {
-  return avatarUrl ? (
+export default function Avatar({ alt, src, size = 'base', className, ...props }) {
+  return src ? (
     <img
       className={classNames(
         {
@@ -12,8 +12,8 @@ export default function Avatar({ avatarUrl, size = 'base', className, ...props }
         'rounded-full',
         className,
       )}
-      src={avatarUrl}
-      alt=""
+      src={src}
+      alt={alt}
       {...props}
     />
   ) : (
