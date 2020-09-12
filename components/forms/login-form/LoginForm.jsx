@@ -1,11 +1,13 @@
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { axiosWithAuth } from 'utils/axiosWithAuth';
+import { UserContext } from 'providers/UserProvider';
 
 export default function LoginForm() {
   const { register, handleSubmit, errors } = useForm();
+  const { setUser } = useContext(UserContext);
 
   let router = useRouter();
 
@@ -13,8 +15,15 @@ export default function LoginForm() {
     axiosWithAuth()
       .post('/login', user)
       .then(response => {
-        localStorage.setItem('token', response.data.accessToken);
-        router.push('/dashboard');
+        setUser(response.data.user);
+        localStorage.setItem('accessToken', response.data.accessToken);
+
+        if (response.data.user.staging) {
+          router.push('/profile');
+        } 
+        else {
+          router.push('/profiles');
+        }
       })
       .catch(error => console.error('LoginForm.js > onSubmit:', error.message));
   };

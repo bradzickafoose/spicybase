@@ -1,13 +1,13 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import { Layout, PageHeading } from 'components';
+import { UserContext } from 'providers/UserProvider';
 
 export default function ProfilePage() {
-  const [first_name] = useState('Bob');
-  const [last_name] = useState('Iger');
+  const { user } = useContext(UserContext);
 
   return (
-    <Layout title={`${first_name}'s Profile`} pageTitle={false}>
-      <PageHeading title={`${first_name} ${last_name}`} />
+    <Layout title={`${user.firstName}'s Profile`} pageTitle={false}>
+      <PageHeading title={`${user.firstName} ${user.lastName}`} />
     </Layout>
   );
 }
