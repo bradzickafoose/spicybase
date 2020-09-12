@@ -6,7 +6,7 @@ export default function ProfilePage() {
   const [last_name] = useState('Iger');
 
   return (
-    <Layout title={`${first_name}'s Profile`} pageTitle={false}>
+    <Layout title={`${first_name}'s Profile`} pageTitle={false} footer={false}>
       <PageHeading title={`${first_name} ${last_name}`} />
     </Layout>
   );

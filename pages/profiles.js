@@ -3,7 +3,7 @@ import requireUser from 'utils/requireUser';
 
 export default function ProfilesPage() {
   return (
-    <Layout>
+    <Layout footer={false}>
       <Container>
         <PlaceholderSection />
       </Container>
