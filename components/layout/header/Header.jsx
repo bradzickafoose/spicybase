@@ -21,7 +21,6 @@ const appLinks = [
   { href: '/', label: 'Home' },
   { href: '/profiles', label: 'Talent' },
   { href: '/jobs', label: 'Jobs' },
-  { href: '/team', label: 'Team' },
   { href: '/messages', label: 'Messages' },
 ];
 
