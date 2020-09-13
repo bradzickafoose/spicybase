@@ -1,6 +1,4 @@
 import { Layout, Container, JobLink } from 'components';
-import requireUser from 'utils/requireUser';
-import { Job } from 'data/models';
 
 export default function JobsPage({ jobs }) {
   return (
@@ -21,14 +19,3 @@ export default function JobsPage({ jobs }) {
     </Layout>
   );
 }
-
-async function fetchJobs(decoded) {
-  const jobs = await new Job()
-    .where({ created_by: decoded.id })
-    .fetchAll({ withRelated: 'job_categories' });
-
-  const serialized = jobs.serialize({ hidden: ['created_at', 'updated_at'] });
-  return { props: { jobs: serialized } };
-}
-
-export const getServerSideProps = requireUser(fetchJobs);

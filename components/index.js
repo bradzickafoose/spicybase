@@ -6,7 +6,6 @@ export {
   Dropdown,
   Icon,
   Link,
-  Modal,
   PlaceholderSection,
 } from './common';
 export { CreateJobForm, LoginForm, RegistrationForm } from './forms';

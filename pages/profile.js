@@ -1,8 +1,9 @@
 import { useContext } from 'react';
 import { Layout, PageHeading } from 'components';
 import { UserContext } from 'providers/UserProvider';
+import withAuth from 'utils/withAuth';
 
-export default function ProfilePage() {
+function ProfilePage() {
   const { user } = useContext(UserContext);
 
   return (
@@ -11,3 +12,5 @@ export default function ProfilePage() {
     </Layout>
   );
 }
+
+export default withAuth(ProfilePage);

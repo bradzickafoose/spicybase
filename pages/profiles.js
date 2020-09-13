@@ -1,7 +1,7 @@
 import { Container, PlaceholderSection, Layout } from 'components';
-import requireUser from 'utils/requireUser';
+import withAuth from 'utils/withAuth';
 
-export default function ProfilesPage() {
+function ProfilesPage() {
   return (
     <Layout footer={false}>
       <Container>
@@ -11,4 +11,4 @@ export default function ProfilesPage() {
   );
 }
 
-export const getServerSideProps = requireUser();
+export default withAuth(ProfilesPage);
