@@ -1,11 +1,13 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { axiosWithAuth } from 'utils/axiosWithAuth';
+import { UserContext } from 'providers/UserProvider';
 import moment from 'moment';
 
 export default function RegistrationForm() {
   const { register, handleSubmit, errors } = useForm();
+  const { setUser } = useContext(UserContext);
 
   let router = useRouter();
 
@@ -16,6 +18,8 @@ export default function RegistrationForm() {
     axiosWithAuth()
       .post('/register', user)
       .then(response => {
+        setUser(response.data.user);
+        localStorage.setItem('accessToken', response.data.accessToken);
         router.push('/profile');
       })
       .catch(error => console.log('RegistrationForm.js > onSubmit:', error.message));
@@ -35,7 +39,7 @@ export default function RegistrationForm() {
             autoComplete="off"
             type="text"
             ref={register({ required: 'First name is required.' })}
-            className="relative block w-full px-3 py-2 text-gray-700 placeholder-gray-600 border border-gray-300 rounded-none appearance-none bg-gray-50 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5"
+            className="relative block w-full px-3 py-3 text-lg text-gray-700 placeholder-gray-600 border border-gray-300 rounded-none appearance-none bg-gray-50 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5"
           />
         </div>
         <div className="-mt-px">
@@ -45,7 +49,7 @@ export default function RegistrationForm() {
             autoComplete="off"
             type="text"
             ref={register({ required: 'Last name is required.' })}
-            className="relative block w-full px-3 py-2 text-gray-700 placeholder-gray-600 border border-gray-300 rounded-none appearance-none bg-gray-50 rounded-b-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5"
+            className="relative block w-full px-3 py-3 text-lg text-gray-700 placeholder-gray-600 border border-gray-300 rounded-none appearance-none bg-gray-50 rounded-b-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5"
           />
         </div>
       </div>
@@ -66,7 +70,7 @@ export default function RegistrationForm() {
           autoComplete="off"
           type="date"
           ref={register({ required: 'Select your birth date to continue.' })}
-          className="relative block w-full px-3 py-2 text-gray-700 placeholder-gray-600 border border-gray-300 rounded-md appearance-none bg-gray-50 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5"
+          className="relative block w-full px-3 py-3 text-lg text-gray-700 placeholder-gray-600 border border-gray-300 rounded-md appearance-none bg-gray-50 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5"
         />
         {errors.birthday ? (
           <div className="my-1 text-xs text-red-600">{errors.birthday.message}</div>
@@ -91,7 +95,7 @@ export default function RegistrationForm() {
               message: 'Enter a valid email.',
             },
           })}
-          className="relative block w-full px-3 py-2 text-gray-700 placeholder-gray-600 border border-gray-300 rounded-md appearance-none bg-gray-50 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5"
+          className="relative block w-full px-3 py-3 text-lg text-gray-700 placeholder-gray-600 border border-gray-300 rounded-md appearance-none bg-gray-50 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5"
         />
         {errors.email ? (
           <div className="my-1 text-xs text-red-600">{errors.email.message}</div>
@@ -111,7 +115,7 @@ export default function RegistrationForm() {
           autoComplete="off"
           type="password"
           ref={register({ required: 'Password is required.', minLength: 8 })}
-          className="relative block w-full px-3 py-2 text-gray-700 placeholder-gray-600 border border-gray-300 rounded-md appearance-none bg-gray-50 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5"
+          className="relative block w-full px-3 py-3 text-lg text-gray-700 placeholder-gray-600 border border-gray-300 rounded-md appearance-none bg-gray-50 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5"
         />
         {errors.password && (
           <div className="my-1 text-xs text-red-600">{errors.password.message}</div>
@@ -120,21 +124,8 @@ export default function RegistrationForm() {
       <div className="mt-6">
         <button
           type="submit"
-          className="relative flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out bg-green-600 border border-transparent rounded-md group hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-red active:bg-green-700"
+          className="relative flex justify-center w-full px-4 py-3 text-lg font-semibold leading-5 text-white transition duration-150 ease-in-out bg-green-600 border border-transparent rounded-md group hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green active:bg-green-700"
         >
-          <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-            <svg
-              className="w-5 h-5 text-green-500 transition duration-150 ease-in-out group-hover:text-green-400"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path
-                fillRule="evenodd"
-                d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </span>
           Continue
         </button>
       </div>
