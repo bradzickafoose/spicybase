@@ -10,5 +10,3 @@ export default function MessagesPage() {
     </Layout>
   );
 }
-
-export const getServerSideProps = requireUser();

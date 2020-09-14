@@ -18,15 +18,13 @@ export default function Layout({
           rel="stylesheet"
         />
       </Head>
-      <div style={{ backgroundColor: '#F3EDE8' }}>
-        {header && <Header />}
-        <main>
-          {pageTitle && <PageHeading title={title} />}
-          {children}
-        </main>
-        <div id="__modals" />
-        {footer && <Footer />}
-      </div>
+      {header && <Header />}
+      <main>
+        {pageTitle && <PageHeading title={title} />}
+        {children}
+      </main>
+      <div id="__modals" />
+      {footer && <Footer />}
     </>
   );
 }

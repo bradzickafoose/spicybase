@@ -1,11 +1,13 @@
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { axiosWithAuth } from 'utils/axiosWithAuth';
+import { UserContext } from 'providers/UserProvider';
 
 export default function LoginForm() {
   const { register, handleSubmit, errors } = useForm();
+  const { setUser } = useContext(UserContext);
 
   let router = useRouter();
 
@@ -13,8 +15,15 @@ export default function LoginForm() {
     axiosWithAuth()
       .post('/login', user)
       .then(response => {
-        localStorage.setItem('token', response.data.accessToken);
-        router.push('/dashboard');
+        setUser(response.data.user);
+        localStorage.setItem('accessToken', response.data.accessToken);
+
+        if (response.data.user.staging) {
+          router.push('/profile');
+        }
+        else {
+          router.push('/profiles');
+        }
       })
       .catch(error => console.error('LoginForm.js > onSubmit:', error.message));
   };
@@ -41,7 +50,7 @@ export default function LoginForm() {
               },
             })}
             required
-            className="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none bg-gray-50 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5"
+            className="relative block w-full px-3 py-3 text-lg text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none bg-gray-50 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5"
           />
         </div>
         <div className="-mt-px">
@@ -54,7 +63,7 @@ export default function LoginForm() {
             type="password"
             ref={register({ required: 'Password is required.', minLength: 8 })}
             required
-            className="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none bg-gray-50 rounded-b-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5"
+            className="relative block w-full px-3 py-3 text-lg text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none bg-gray-50 rounded-b-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5"
           />
         </div>
       </div>
@@ -83,7 +92,7 @@ export default function LoginForm() {
       <div className="mt-6">
         <button
           type="submit"
-          className="relative flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out bg-green-600 border border-transparent rounded-md group hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-red active:bg-green-700"
+          className="relative flex justify-center w-full px-4 py-3 font-semibold leading-5 text-white transition duration-150 ease-in-out bg-green-600 border border-transparent rounded-md group hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green active:bg-green-700"
         >
           <span className="absolute inset-y-0 left-0 flex items-center pl-3">
             <svg

@@ -1,6 +1,0 @@
-{
-  "rate_types": [
-    { "id": 1, "name": "Per Unit" },
-    { "id": 2, "name": "Per Hour" }
-  ]
-}

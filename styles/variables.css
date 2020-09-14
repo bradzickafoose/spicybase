@@ -1,5 +1,5 @@
 :root {
-  --color-white: #fff;
+  --color-white: #fdfdfd;
   --color-black: #222;
   --color-gray: #6c757d;
   --color-gray-dark: #283c46;
@@ -8,7 +8,7 @@
   --color-shadow: rgba(0, 0, 0, 0.1);
   --color-shadow-dark: rgba(0, 0, 0, 0.2);
   --color-text: var(--color-black);
-  --color-background: var(--color-tan);
+  --color-background: var(--color-white);
   --color-sheet: var(--color-white);
   --color-neutral: var(--color-gray);
   --color-link: var(--color-gray-dark);

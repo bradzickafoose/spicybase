@@ -128,7 +128,7 @@ export default function CreateJobForm({ categories }) {
           </div>
         </div>
       </section>
-      <footer className="my-8">
+      <footer className="mt-8">
         <div className="flex justify-end">
           <span className="inline-flex ml-3 rounded-md shadow-sm">
             <Button type="submit">Create job</Button>
