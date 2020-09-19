@@ -1,6 +1,7 @@
-import { Container, Layout, Link } from 'components';
+import { Container, Layout } from 'components';
 import { useEffect, useState } from 'react';
 import { axiosWithAuth } from 'utils';
+import Link from 'next/link';
 
 function ProfileCard({ user }) {
   return (
@@ -39,7 +40,11 @@ function ProfilesPage() {
         <h2 className="mb-4 text-2xl font-semibold leading-6 text-gray-900">New this week</h2>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
           {profiles.map(profile => (
-            <ProfileCard key={profile._id} user={profile} />
+            <Link href={`/profile/${profile.username}`}>
+              <a>
+                <ProfileCard key={profile._id} user={profile} />
+              </a>
+            </Link>
           ))}
         </div>
       </Container>
