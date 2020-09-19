@@ -1,17 +1,24 @@
 import classNames from 'classnames';
 
-export default function Avatar({ alt, src, size = 'base', className, ...props }) {
+export default function Avatar({
+  alt,
+  src,
+  size = 'base',
+  variant = 'rounded',
+  className,
+  ...props
+}) {
   return src ? (
     <img
       className={classNames(
         {
-          'w-32 h-32': size === 'xlarge',
+          'w-60 h-60': size === 'xlarge',
           'w-20 h-20': size === 'large',
           'w-12 h-12': size === 'base',
           'w-8 h-8': size === 'small',
           'w-6 h-6': size === 'xsmall',
         },
-        'rounded-full',
+        { 'rounded-full': variant === 'circular', 'rounded-lg': variant === 'rounded' },
         className,
       )}
       src={src}

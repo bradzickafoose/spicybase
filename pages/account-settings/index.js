@@ -19,7 +19,7 @@ function AccountSettingsPage() {
         </Link>
 
         <main>
-          <div className="grid grid-cols-1 gap-5 mt-5 sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 mt-5 sm:grid-cols-3">
             <div className="overflow-hidden bg-white border-2 border-solid rounded-lg shadow-md border-gray-50">
               <div className="px-4 py-5 sm:p-6">
                 <dl>
@@ -28,7 +28,7 @@ function AccountSettingsPage() {
                       <a>Personal info</a>
                     </Link>
                     <svg
-                      className="flex-shrink-0 w-5 text-red-400"
+                      className="flex-shrink-0 w-5 text-green-400"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
@@ -53,7 +53,7 @@ function AccountSettingsPage() {
                       <a>Login &amp; security</a>
                     </Link>
                     <svg
-                      className="flex-shrink-0 w-5 text-red-400"
+                      className="flex-shrink-0 w-5 text-green-400"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
@@ -78,7 +78,7 @@ function AccountSettingsPage() {
                       <a>Payments &amp; payouts</a>
                     </Link>
                     <svg
-                      className="flex-shrink-0 w-5 text-red-400"
+                      className="flex-shrink-0 w-5 text-green-400"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
@@ -103,7 +103,7 @@ function AccountSettingsPage() {
                       <a>Notifications</a>
                     </Link>
                     <svg
-                      className="flex-shrink-0 w-5 text-red-400"
+                      className="flex-shrink-0 w-5 text-green-400"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >

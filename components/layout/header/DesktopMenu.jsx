@@ -12,7 +12,7 @@ export default function Dropdown({ accountLinks, isOpen, handleLogout }) {
       leaveFrom="opacity-100 scale-100"
       leaveTo="opacity-0 scale-95"
     >
-      <div className="absolute right-0 w-48 mt-2 origin-top-right rounded-md shadow-lg">
+      <div className="absolute right-0 z-10 w-48 mt-2 origin-top-right rounded-md shadow-lg">
         <div
           className="py-1 bg-white rounded-md shadow-xs"
           role="menu"
