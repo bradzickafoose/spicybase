@@ -1,7 +1,11 @@
+import { useContext } from 'react';
 import Link from 'next/link';
 import { Transition } from '@tailwindui/react';
+import { UserContext } from 'providers/UserProvider';
 
 export default function Dropdown({ accountLinks, isOpen, handleLogout }) {
+  const { user } = useContext(UserContext);
+
   return (
     <Transition
       show={isOpen}
@@ -19,7 +23,7 @@ export default function Dropdown({ accountLinks, isOpen, handleLogout }) {
           aria-orientation="vertical"
           aria-labelledby="user-menu"
         >
-          <Link href="/profile">
+          <Link href={`/profile/${user.username}`}>
             <a className="block px-4 py-2 text-sm leading-5 text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100 focus:outline-none focus:bg-gray-100">
               Your Profile
             </a>

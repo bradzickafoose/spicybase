@@ -1,6 +1,8 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { Avatar, Button, Container, Layout, ProfileForm, SectionHeading } from 'components';
 import { UserContext } from 'providers/UserProvider';
+import { useRouter } from 'next/router';
+import axios from 'axios';
 import withAuth from 'utils/withAuth';
 import Icon from 'components/common/icon/Icon';
 import HomeIcon from 'components/icons/Home';
@@ -19,7 +21,7 @@ function ProfileAbout({ user }) {
         </div>
       )}
       <div>
-        {!!languages.length && (
+        {!!languages && (
           <div>
             <span>
               <Icon />
@@ -60,9 +62,11 @@ function ProfileMeta({ user }) {
   );
 }
 
-function ProfilePage() {
+function ProfilePage({ user }) {
   const [editAccount, setEditAccount] = useState(true);
-  const { user } = useContext(UserContext);
+  const { user: currentUser } = useContext(UserContext);
+  const router = useRouter();
+  const { username } = router.query;
 
   return (
     <Layout title={`${user.firstName}'s Profile`} pageTitle={false} footer={false}>
@@ -73,9 +77,12 @@ function ProfilePage() {
           </div>
           <div className="col-span-3 row-span-1">
             <SectionHeading title={`${user.firstName} ${user.lastName}`}>
-              <Button variant="outlined" onClick={() => setEditAccount(!editAccount)}>
-                {editAccount ? 'View Profile' : 'Edit Profile'}
-              </Button>
+              {
+                !!currentUser && currentUser.username === username && 
+                <Button variant="outlined" onClick={() => setEditAccount(!editAccount)}>
+                  {editAccount ? 'View Profile' : 'Edit Profile'}
+                </Button>
+              }
             </SectionHeading>
             <section className="pb-8 mb-8 border-b">
               <h2 className="text-2xl">About</h2>
@@ -97,4 +104,25 @@ function ProfilePage() {
   );
 }
 
-export default withAuth(ProfilePage);
+
+export async function getServerSideProps(ctx) {
+  const {username} = ctx.params;
+  let user;
+
+  try {
+    const { data } = await axios.get(`http://localhost:5000/user/${username}`);
+    user = data.user;
+  }
+  catch (err) {
+    console.log(err.message);
+  }
+  finally {
+    return {
+      props: { user }
+    }
+  }
+}
+
+export default ProfilePage;
+// export default withAuth(ProfilePage);
+
