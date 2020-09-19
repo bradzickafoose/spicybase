@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { axiosWithAuth } from 'utils/axiosWithAuth';
 import { UserContext } from 'providers/UserProvider';
-import moment from 'moment';
+import { format } from 'date-fns';
 
 export default function RegistrationForm() {
   const { register, handleSubmit, errors } = useForm();
@@ -12,7 +12,7 @@ export default function RegistrationForm() {
   let router = useRouter();
 
   const onSubmit = async user => {
-    user.birthday = moment(user.birthday, 'YYYY-MM-DD').format('MM-DD-YYYY').toString();
+    user.birthday = format(new Date(user.birthday), 'MM-dd-yyyy');
     user.role = 'contractor';
 
     axiosWithAuth()
@@ -21,6 +21,7 @@ export default function RegistrationForm() {
         setUser(response.data.user);
         localStorage.setItem('accessToken', response.data.accessToken);
         router.push('/profile');
+        console.log(user)
       })
       .catch(error => console.log('RegistrationForm.js > onSubmit:', error.message));
   };
