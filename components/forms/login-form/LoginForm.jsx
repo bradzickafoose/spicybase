@@ -7,19 +7,19 @@ import { UserContext } from 'providers/UserProvider';
 
 export default function LoginForm() {
   const { register, handleSubmit, errors } = useForm();
-  const { setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   let router = useRouter();
 
-  const onSubmit = async user => {
+  const onSubmit = async login => {
     axiosWithAuth()
-      .post('/login', user)
+      .post('/login', login)
       .then(response => {
         setUser(response.data.user);
         localStorage.setItem('accessToken', response.data.accessToken);
 
         if (response.data.user.staging) {
-          router.push('/profile');
+          router.push(`/profile/${user.username}`);
         }
         else {
           router.push('/profiles');
