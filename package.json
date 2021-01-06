@@ -10,7 +10,7 @@
 	"dependencies": {
 		"@tailwindcss/ui": "^0.7.2",
 		"@tailwindui/react": "^0.1.1",
-		"axios": "^0.21.0",
+		"axios": "^0.21.1",
 		"classnames": "^2.2.6",
 		"date-fns": "^2.16.1",
 		"next": "10.0.0",
